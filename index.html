@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MoroccoStay — Discover authentic Moroccan riads, desert camps, and coastal retreats. Book your dream stay in the heart of Morocco." />
+  <meta name="theme-color" content="#C8522A" />
+  <meta property="og:title" content="MoroccoStay — Live the Moroccan Dream" />
+  <meta property="og:description" content="Authentic stays across Morocco's most stunning destinations." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=1200" />
+  <title>MoroccoStay — Live the Moroccan Dream</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --terracotta: #C8522A;
+      --terracotta-light: #E07048;
+      --terracotta-dark: #9E3D1A;
+      --sand: #F5ECD7;
+      --sand-dark: #E8D9BE;
+      --midnight: #1A1410;
+      --ink: #2C1F14;
+      --gold: #D4A843;
+      --gold-light: #F0C860;
+      --sage: #6B8068;
+      --white: #FEFAF4;
+      --glass: rgba(254, 250, 244, 0.08);
+      --shadow-sm: 0 2px 12px rgba(26,20,16,0.12);
+      --shadow-md: 0 8px 32px rgba(26,20,16,0.18);
+      --shadow-lg: 0 24px 64px rgba(26,20,16,0.28);
+      --shadow-xl: 0 40px 100px rgba(26,20,16,0.4);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --radius-lg: 28px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--midnight);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--terracotta); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+      mix-blend-mode: normal;
+    }
+    .cursor-ring {
+      position: fixed; width: 40px; height: 40px;
+      border: 1.5px solid rgba(200,82,42,0.5); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    }
+    body:hover .cursor { opacity: 1; }
+    a:hover ~ .cursor, button:hover ~ .cursor { width: 20px; height: 20px; }
+
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=1600&q=80');
+      pointer-events: none; z-index: 1; opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,20,16,0.7);
+      backdrop-filter: blur(24px) saturate(1.5);
+      border-bottom: 1px solid rgba(212,168,67,0.12);
+      transition: padding 0.3s ease;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--terracotta), var(--gold));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; box-shadow: 0 4px 16px rgba(200,82,42,0.4);
+    }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600;
+      color: var(--white); letter-spacing: 0.02em;
+    }
+    .logo-text span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      color: rgba(254,250,244,0.7); text-decoration: none;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(254,250,244,0.2);
+      color: var(--white); padding: 10px 22px;
+      border-radius: 50px; font-family: 'Syne', sans-serif;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.25s ease; letter-spacing: 0.05em;
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold); color: var(--gold);
+      box-shadow: 0 0 20px rgba(212,168,67,0.2);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+      border: none; color: var(--white);
+      padding: 11px 26px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(200,82,42,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+      transition: all 0.25s ease; letter-spacing: 0.05em;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.12));
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200,82,42,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* HERO */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=1600&q=80');
+      background-size: cover; background-position: center 40%;
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.05) translateY(0); }
+      to { transform: scale(1.12) translateY(-1%); }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        170deg,
+        rgba(26,20,16,0.2) 0%,
+        rgba(26,20,16,0.1) 30%,
+        rgba(26,20,16,0.7) 70%,
+        rgba(26,20,16,0.95) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 48px 80px;
+      max-width: 800px;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,168,67,0.15);
+      border: 1px solid rgba(212,168,67,0.3);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px;
+      animation: fadeUp 1s ease 0.1s both;
+    }
+    .hero-badge::before { content: '✦'; font-size: 8px; }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 0.95; font-weight: 600;
+      margin-bottom: 24px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--terracotta-light);
+      display: block;
+    }
+    .hero-sub {
+      font-size: 15px; line-height: 1.7;
+      color: rgba(254,250,244,0.7);
+      max-width: 480px; margin-bottom: 40px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+    .btn-hero {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--terracotta), #E06030);
+      border: none; color: var(--white);
+      padding: 16px 36px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 40px rgba(200,82,42,0.5), 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: all 0.3s ease; letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .btn-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 60px rgba(200,82,42,0.65), 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .btn-hero svg { transition: transform 0.3s ease; }
+    .btn-hero:hover svg { transform: translateX(4px); }
+    .btn-hero-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(254,250,244,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254,250,244,0.2);
+      color: var(--white);
+      padding: 16px 36px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .btn-hero-outline:hover {
+      background: rgba(254,250,244,0.14);
+      border-color: rgba(254,250,244,0.4);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      position: absolute; right: 48px; bottom: 80px; z-index: 2;
+      display: flex; gap: 24px;
+      animation: fadeUp 1s ease 0.7s both;
+    }
+    .stat-pill {
+      background: rgba(26,20,16,0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 20px; padding: 16px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 600; color: var(--gold);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(254,250,244,0.5); margin-top: 4px;
+    }
+
+    /* SEARCH BAR */
+    .search-section {
+      position: relative; z-index: 10;
+      margin-top: -48px;
+      padding: 0 48px;
+    }
+    .search-bar {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 8px 8px 8px 0;
+      display: flex; align-items: center;
+      box-shadow: var(--shadow-xl);
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .search-field {
+      flex: 1; display: flex; flex-direction: column;
+      padding: 12px 24px;
+      border-right: 1px solid rgba(26,20,16,0.08);
+    }
+    .search-field:last-of-type { border-right: none; }
+    .search-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink); opacity: 0.5;
+      margin-bottom: 4px;
+    }
+    .search-input {
+      border: none; outline: none; background: transparent;
+      font-family: 'Syne', sans-serif; font-size: 14px;
+      font-weight: 600; color: var(--ink);
+      width: 100%;
+    }
+    .search-input::placeholder { color: rgba(44,31,20,0.4); }
+    .search-btn {
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+      border: none; color: var(--white);
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; margin-right: 4px;
+      box-shadow: 0 4px 20px rgba(200,82,42,0.45);
+      transition: all 0.25s ease;
+      font-size: 20px;
+    }
+    .search-btn:hover { transform: scale(1.06); box-shadow: 0 8px 32px rgba(200,82,42,0.6); }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 2; }
+
+    .section-header {
+      text-align: center; margin-bottom: 56px;
+    }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--terracotta);
+      margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: '—'; opacity: 0.5;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 600; line-height: 1.05;
+      color: var(--white);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-size: 15px; color: rgba(254,250,244,0.55);
+      max-width: 500px; margin: 16px auto 0; line-height: 1.7;
+    }
+
+    /* DESTINATIONS */
+    .destinations { padding: 100px 48px; }
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .dest-card {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius-lg); cursor: pointer;
+      group: true;
+    }
+    .dest-card:first-child {
+      grid-row: 1 / 3;
+      grid-column: 1;
+    }
+    .dest-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      min-height: 240px;
+    }
+    .dest-card:first-child img { min-height: 520px; }
+    .dest-card:hover img { transform: scale(1.08); }
+    .dest-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(170deg, transparent 40%, rgba(26,20,16,0.88) 100%);
+      transition: background 0.4s ease;
+    }
+    .dest-card:hover .dest-card-overlay {
+      background: linear-gradient(170deg, rgba(26,20,16,0.1) 0%, rgba(26,20,16,0.88) 100%);
+    }
+    .dest-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px;
+    }
+    .dest-card-tag {
+      display: inline-block;
+      background: rgba(212,168,67,0.2); border: 1px solid rgba(212,168,67,0.3);
+      color: var(--gold); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px; margin-bottom: 10px;
+    }
+    .dest-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 600; color: var(--white);
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .dest-card:not(:first-child) .dest-card-name { font-size: 22px; }
+    .dest-card-count {
+      font-size: 12px; color: rgba(254,250,244,0.6);
+    }
+    .dest-card-arrow {
+      position: absolute; top: 24px; right: 24px;
+      width: 36px; height: 36px;
+      background: rgba(254,250,244,0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254,250,244,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.8) rotate(-45deg);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+    .dest-card:hover .dest-card-arrow { opacity: 1; transform: scale(1) rotate(0deg); }
+
+    /* LISTINGS */
+    .listings { padding: 80px 48px; background: rgba(255,255,255,0.02); }
+    .listings-tabs {
+      display: flex; gap: 8px; justify-content: center;
+      margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: rgba(254,250,244,0.05);
+      border: 1px solid rgba(254,250,244,0.1);
+      color: rgba(254,250,244,0.6); padding: 10px 22px;
+      border-radius: 50px; font-family: 'Syne', sans-serif;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      transition: all 0.25s ease; letter-spacing: 0.05em;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(200,82,42,0.4);
+    }
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px; max-width: 1200px; margin: 0 auto;
+    }
+    .listing-card {
+      background: rgba(254,250,244,0.04);
+      border: 1px solid rgba(254,250,244,0.08);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+      cursor: pointer;
+    }
+    .listing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212,168,67,0.25);
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(212,168,67,0.1);
+    }
+    .listing-img-wrap {
+      position: relative; height: 220px; overflow: hidden;
+    }
+    .listing-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .listing-card:hover .listing-img-wrap img { transform: scale(1.07); }
+    .listing-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: rgba(26,20,16,0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254,250,244,0.15);
+      color: var(--white); font-size: 11px; font-weight: 700;
+      padding: 5px 12px; border-radius: 50px;
+      letter-spacing: 0.06em;
+    }
+    .listing-badge.featured {
+      background: rgba(200,82,42,0.85);
+      border-color: rgba(200,82,42,0.5);
+    }
+    .listing-fav {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      background: rgba(26,20,16,0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254,250,244,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px;
+      transition: all 0.25s ease;
+    }
+    .listing-fav:hover { background: rgba(200,82,42,0.8); transform: scale(1.1); }
+    .listing-body { padding: 22px; }
+    .listing-location {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--terracotta);
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .listing-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600; color: var(--white);
+      line-height: 1.2; margin-bottom: 12px;
+    }
+    .listing-meta {
+      display: flex; gap: 14px; margin-bottom: 18px;
+    }
+    .listing-meta-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: rgba(254,250,244,0.5);
+    }
+    .listing-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(254,250,244,0.08);
+    }
+    .listing-price {
+      display: flex; align-items: baseline; gap: 4px;
+    }
+    .price-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 600; color: var(--gold);
+    }
+    .price-per { font-size: 12px; color: rgba(254,250,244,0.5); }
+    .listing-rating {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 13px; color: var(--white); font-weight: 600;
+    }
+    .listing-rating .star { color: var(--gold); font-size: 14px; }
+    .listing-cta {
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+      border: none; color: var(--white);
+      padding: 9px 20px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,82,42,0.35);
+      transition: all 0.25s ease; letter-spacing: 0.04em;
+    }
+    .listing-cta:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(200,82,42,0.5); }
+
+    /* EXPERIENCES */
+    .experiences { padding: 80px 48px; }
+    .exp-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px; max-width: 1200px; margin: 0 auto;
+    }
+    .exp-card {
+      background: rgba(254,250,244,0.04);
+      border: 1px solid rgba(254,250,244,0.08);
+      border-radius: var(--radius-lg); padding: 28px 24px;
+      text-align: center;
+      transition: all 0.3s ease; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,82,42,0.08), transparent);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .exp-card:hover { border-color: rgba(200,82,42,0.3); transform: translateY(-4px); }
+    .exp-card:hover::before { opacity: 1; }
+    .exp-icon {
+      font-size: 40px; margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(200,82,42,0.3));
+    }
+    .exp-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .exp-desc {
+      font-size: 12px; color: rgba(254,250,244,0.5);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 100px 48px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,82,42,0.08) 0%, transparent 70%);
+    }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .review-card {
+      background: rgba(254,250,244,0.04);
+      border: 1px solid rgba(254,250,244,0.08);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: all 0.3s ease;
+    }
+    .review-card:hover {
+      border-color: rgba(212,168,67,0.2);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic; line-height: 1.7;
+      color: rgba(254,250,244,0.85); margin-bottom: 24px;
+    }
+    .reviewer {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .reviewer-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid rgba(212,168,67,0.3); overflow: hidden;
+    }
+    .reviewer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .reviewer-name { font-weight: 700; font-size: 14px; color: var(--white); }
+    .reviewer-from { font-size: 11px; color: rgba(254,250,244,0.45); margin-top: 2px; }
+
+    /* CTA BAND */
+    .cta-band {
+      position: relative; overflow: hidden;
+      margin: 0 48px; border-radius: 28px;
+      padding: 80px 64px;
+      background: linear-gradient(135deg, var(--terracotta-dark) 0%, var(--terracotta) 50%, #D4600A 100%);
+      box-shadow: var(--shadow-xl);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; top: -50%; right: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-band::after {
+      content: '✦ ✦ ✦';
+      position: absolute; bottom: 24px; right: 32px;
+      font-size: 12px; color: rgba(255,255,255,0.2);
+      letter-spacing: 12px;
+    }
+    .cta-text-wrap { position: relative; z-index: 1; }
+    .cta-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 600; line-height: 1.1;
+      color: var(--white);
+    }
+    .cta-sub {
+      font-size: 14px; color: rgba(255,255,255,0.7);
+      margin-top: 12px; max-width: 420px;
+    }
+    .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-white {
+      background: var(--white);
+      border: none; color: var(--terracotta-dark);
+      padding: 16px 36px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: all 0.25s ease; letter-spacing: 0.04em;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .btn-outline-white {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 15px 36px; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.25s ease; letter-spacing: 0.04em;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: white; }
+
+    /* HOSTS */
+    .hosts { padding: 80px 48px 100px; }
+    .host-feature {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .host-img-col { position: relative; }
+    .host-img-main {
+      width: 100%; height: 520px; object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-xl);
+    }
+    .host-img-accent {
+      position: absolute; bottom: -24px; right: -24px;
+      width: 200px; height: 240px; object-fit: cover;
+      border-radius: 16px;
+      border: 4px solid var(--midnight);
+      box-shadow: var(--shadow-lg);
+    }
+    .host-proof {
+      position: absolute; top: 32px; left: -24px;
+      background: rgba(26,20,16,0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212,168,67,0.25);
+      border-radius: 16px; padding: 16px 22px;
+      box-shadow: var(--shadow-md);
+    }
+    .host-proof-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; color: var(--gold); font-weight: 600;
+    }
+    .host-proof-lbl { font-size: 11px; color: rgba(254,250,244,0.5); letter-spacing: 0.08em; }
+    .host-text-col {}
+    .host-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 600; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .host-desc {
+      font-size: 15px; color: rgba(254,250,244,0.6);
+      line-height: 1.75; margin-bottom: 36px;
+    }
+    .host-perks { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .host-perk {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .perk-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--terracotta); flex-shrink: 0;
+      margin-top: 7px;
+      box-shadow: 0 0 12px rgba(200,82,42,0.6);
+    }
+    .perk-text { font-size: 14px; color: rgba(254,250,244,0.75); line-height: 1.5; }
+    .perk-text strong { color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      background: rgba(10,7,4,0.95);
+      border-top: 1px solid rgba(254,250,244,0.06);
+      padding: 80px 48px 48px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 60px;
+    }
+    .footer-brand-desc {
+      font-size: 14px; color: rgba(254,250,244,0.45);
+      line-height: 1.7; margin-top: 16px; max-width: 280px;
+    }
+    .footer-socials { display: flex; gap: 10px; margin-top: 24px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(254,250,244,0.06);
+      border: 1px solid rgba(254,250,244,0.1);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .social-btn:hover {
+      background: var(--terracotta); border-color: var(--terracotta);
+      transform: translateY(-2px);
+    }
+    .footer-col-title {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white); margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-size: 14px; color: rgba(254,250,244,0.45);
+      text-decoration: none; transition: color 0.2s ease;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid rgba(254,250,244,0.06);
+      font-size: 12px; color: rgba(254,250,244,0.3);
+    }
+    .footer-bottom a { color: var(--terracotta); text-decoration: none; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(32px); transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* TOAST */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--ink); border: 1px solid rgba(212,168,67,0.3);
+      color: var(--white); padding: 14px 28px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; z-index: 200;
+      box-shadow: var(--shadow-lg); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      display: flex; align-items: center; gap: 10px;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .dest-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .dest-card:first-child { grid-row: 1; grid-column: 1 / 3; }
+      .exp-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .host-feature { grid-template-columns: 1fr; gap: 48px; }
+      .host-img-main { height: 400px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero-content, .search-section { padding: 0 24px; }
+      .hero-content { padding-bottom: 60px; }
+      .hero-stats { position: static; flex-wrap: wrap; padding: 20px 24px; gap: 12px; }
+      .destinations, .listings, .experiences, .testimonials, .hosts { padding: 60px 24px; }
+      .cta-band { margin: 0 24px; padding: 48px 32px; }
+      footer { padding: 60px 24px 32px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .dest-grid { grid-template-columns: 1fr; }
+      .dest-card:first-child { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✦ Added to wishlist!</div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">🏡</div>
+      <span class="logo-text">Morocco<span>Stay</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#stays">Stays</a></li>
+      <li><a href="#experiences">Experiences</a></li>
+      <li><a href="#host">List Your Space</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn-ghost" onclick="showToast('Welcome back! 👋')">Sign In</button>
+      <button class="btn-primary">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Morocco's #1 Stay Marketplace</div>
+      <h1 class="hero-title">
+        Discover<br>
+        <em>Authentic</em><br>
+        Morocco
+      </h1>
+      <p class="hero-sub">From enchanting riads in ancient medinas to desert camps under a billion stars — your extraordinary Moroccan journey begins here.</p>
+      <div class="hero-actions">
+        <a href="#stays" class="btn-hero">
+          Explore Stays
+          <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#experiences" class="btn-hero-outline">
+          <span>▶</span> Watch Video
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <div class="stat-num">2,400+</div>
+        <div class="stat-lbl">Listings</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-num">28K+</div>
+        <div class="stat-lbl">Happy Guests</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-lbl">Average Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-bar">
+      <div class="search-field">
+        <div class="search-label">🏙 Where to?</div>
+        <input class="search-input" type="text" placeholder="Marrakech, Chefchaouen…" />
+      </div>
+      <div class="search-field">
+        <div class="search-label">📅 Check In</div>
+        <input class="search-input" type="text" placeholder="Add dates" />
+      </div>
+      <div class="search-field">
+        <div class="search-label">📅 Check Out</div>
+        <input class="search-input" type="text" placeholder="Add dates" />
+      </div>
+      <div class="search-field">
+        <div class="search-label">👥 Guests</div>
+        <input class="search-input" type="text" placeholder="1 guest" />
+      </div>
+      <button class="search-btn" onclick="showToast('Searching for the best stays… ✨')">🔍</button>
+    </div>
+  </div>
+
+  <!-- DESTINATIONS -->
+  <section class="destinations" id="destinations">
+    <div class="section-header reveal">
+      <div class="section-label">Explore</div>
+      <h2 class="section-title">Morocco's Most<br><em>Magical Destinations</em></h2>
+      <p class="section-sub">Each city tells a different story — rich culture, breathtaking landscapes, and timeless architecture.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card reveal" onclick="showToast('Exploring Marrakech… 🌿')">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&q=80" alt="Marrakech" />
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-info">
+          <div class="dest-card-tag">Most Popular</div>
+          <div class="dest-card-name">Marrakech</div>
+          <div class="dest-card-count">748 stays available</div>
+        </div>
+        <div class="dest-card-arrow">↗</div>
+      </div>
+      <div class="dest-card reveal reveal-delay-1" onclick="showToast('Exploring Chefchaouen… 💙')">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80" alt="Chefchaouen" />
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-info">
+          <div class="dest-card-tag">Blue Pearl</div>
+          <div class="dest-card-name">Chefchaouen</div>
+          <div class="dest-card-count">312 stays available</div>
+        </div>
+        <div class="dest-card-arrow">↗</div>
+      </div>
+      <div class="dest-card reveal reveal-delay-2" onclick="showToast('Exploring Fes… 🕌')">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&q=80" alt="Fes" />
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-info">
+          <div class="dest-card-tag">Medieval</div>
+          <div class="dest-card-name">Fes el Bali</div>
+          <div class="dest-card-count">521 stays available</div>
+        </div>
+        <div class="dest-card-arrow">↗</div>
+      </div>
+      <div class="dest-card reveal reveal-delay-1" onclick="showToast('Exploring Sahara… 🏜')">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80" alt="Sahara" />
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-info">
+          <div class="dest-card-tag">Desert</div>
+          <div class="dest-card-name">Sahara Merzouga</div>
+          <div class="dest-card-count">183 camps & stays</div>
+        </div>
+        <div class="dest-card-arrow">↗</div>
+      </div>
+      <div class="dest-card reveal reveal-delay-2" onclick="showToast('Exploring Essaouira… 🌊')">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?w=600&q=80" alt="Essaouira" />
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-info">
+          <div class="dest-card-tag">Coastal</div>
+          <div class="dest-card-name">Essaouira</div>
+          <div class="dest-card-count">265 seaside stays</div>
+        </div>
+        <div class="dest-card-arrow">↗</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTINGS -->
+  <section class="listings" id="stays">
+    <div class="section-header reveal">
+      <div class="section-label">Featured Stays</div>
+      <h2 class="section-title">Hand-picked<br><em>Dream Properties</em></h2>
+    </div>
+    <div class="listings-tabs reveal">
+      <button class="tab-btn active" onclick="setActiveTab(this)">All Stays</button>
+      <button class="tab-btn" onclick="setActiveTab(this)">Riads</button>
+      <button class="tab-btn" onclick="setActiveTab(this)">Desert Camps</button>
+      <button class="tab-btn" onclick="setActiveTab(this)">Coastal Villas</button>
+      <button class="tab-btn" onclick="setActiveTab(this)">Mountain</button>
+    </div>
+    <div class="listings-grid">
+
+      <!-- Card 1 -->
+      <div class="listing-card reveal">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Riad Atlas" />
+          <span class="listing-badge featured">✦ Featured</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Marrakech Medina</div>
+          <div class="listing-name">Riad Atlas — Nomad Suite</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 3 Beds</span>
+            <span class="listing-meta-item">🛁 2 Baths</span>
+            <span class="listing-meta-item">👥 6 Guests</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 680</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 4.97 (142)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Riad Atlas… 🏡')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="listing-card reveal reveal-delay-1">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80" alt="Desert Camp" />
+          <span class="listing-badge">🏜 Desert</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Merzouga, Sahara</div>
+          <div class="listing-name">Saharan Luxury Glamping Tent</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 1 Bed</span>
+            <span class="listing-meta-item">🌙 All-inclusive</span>
+            <span class="listing-meta-item">🐪 Camel tour</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 1,200</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 5.0 (87)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Sahara Camp… 🌅')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="listing-card reveal reveal-delay-2">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?w=600&q=80" alt="Coastal Villa" />
+          <span class="listing-badge">🌊 Coastal</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Essaouira, Atlantic Coast</div>
+          <div class="listing-name">Blue Wind Villa — Ocean View</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 4 Beds</span>
+            <span class="listing-meta-item">🛁 3 Baths</span>
+            <span class="listing-meta-item">🏄 Beach Access</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 950</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 4.93 (203)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Villa… 🌊')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="listing-card reveal">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80" alt="Mountain Kasbah" />
+          <span class="listing-badge">⛰ Mountain</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Imlil, Atlas Mountains</div>
+          <div class="listing-name">Atlas Kasbah — Berber Heritage</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 5 Beds</span>
+            <span class="listing-meta-item">🏔 Trekking</span>
+            <span class="listing-meta-item">🍽 Meals incl.</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 780</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 4.88 (119)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Kasbah… ⛰')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="listing-card reveal reveal-delay-1">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80" alt="Riad Pool" />
+          <span class="listing-badge featured">✦ Superhost</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Fes, Ancient Medina</div>
+          <div class="listing-name">Riad Layla — Private Courtyard</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 2 Beds</span>
+            <span class="listing-meta-item">🏊 Pool</span>
+            <span class="listing-meta-item">👑 Superhost</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 520</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 4.99 (331)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Riad Layla… 🌸')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="listing-card reveal reveal-delay-2">
+        <div class="listing-img-wrap">
+          <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Beach House" />
+          <span class="listing-badge">🌴 Exclusive</span>
+          <div class="listing-fav" onclick="showToast('Added to wishlist! ♥')">♡</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-location">📍 Agadir, Souss Coast</div>
+          <div class="listing-name">Palm Beach Penthouse Suite</div>
+          <div class="listing-meta">
+            <span class="listing-meta-item">🛏 3 Beds</span>
+            <span class="listing-meta-item">🌅 Rooftop</span>
+            <span class="listing-meta-item">🚗 Free parking</span>
+          </div>
+          <div class="listing-footer">
+            <div class="listing-price">
+              <span class="price-num">MAD 1,450</span>
+              <span class="price-per">/night</span>
+            </div>
+            <div class="listing-rating"><span class="star">★</span> 4.95 (78)</div>
+          </div>
+          <div style="margin-top: 16px;">
+            <button class="listing-cta" onclick="showToast('Booking Penthouse… 🏖')">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="experiences" id="experiences">
+    <div class="section-header reveal">
+      <div class="section-label">Beyond the Stay</div>
+      <h2 class="section-title">Curated <em>Experiences</em></h2>
+      <p class="section-sub">Immerse yourself in Morocco's living culture with expert-guided activities.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal" onclick="showToast('Booking cooking class… 🍲')">
+        <span class="exp-icon">🍲</span>
+        <div class="exp-name">Moroccan Cooking</div>
+        <div class="exp-desc">Master tagine, couscous, and pastilla with a local chef in an authentic kitchen.</div>
+      </div>
+      <div class="exp-card reveal reveal-delay-1" onclick="showToast('Booking camel trek… 🐪')">
+        <span class="exp-icon">🐪</span>
+        <div class="exp-name">Sahara Camel Trek</div>
+        <div class="exp-desc">Glide across golden dunes as the sunset paints the sky in amber and violet.</div>
+      </div>
+      <div class="exp-card reveal reveal-delay-2" onclick="showToast('Booking hammam… 🧖')">
+        <span class="exp-icon">🧖</span>
+        <div class="exp-name">Traditional Hammam</div>
+        <div class="exp-desc">Relax in a centuries-old ritual bath — argan oil, black soap, and kessa gloves.</div>
+      </div>
+      <div class="exp-card reveal reveal-delay-3" onclick="showToast('Booking medina tour… 🕌')">
+        <span class="exp-icon">🕌</span>
+        <div class="exp-name">Medina Discovery</div>
+        <div class="exp-desc">Navigate the labyrinthine souks and hidden gems of Fes with an expert local guide.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header reveal">
+      <div class="section-label">Guest Stories</div>
+      <h2 class="section-title">They Lived the<br><em>Moroccan Dream</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The riad in Marrakech was beyond anything I could have imagined. The courtyard, the food, the kindness of the host — I never wanted to leave."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img crossorigin="anonymous" src="https://ui-avatars.com/api/?name=Sarah+M&size=100&background=C8522A&color=fff&bold=true" alt="Sarah" /></div>
+          <div>
+            <div class="reviewer-name">Sarah M.</div>
+            <div class="reviewer-from">Paris, France</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Sleeping under the Sahara stars in that luxury camp was a once-in-a-lifetime experience. MoroccoStay made booking seamless and the host communication was incredible."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img crossorigin="anonymous" src="https://ui-avatars.com/api/?name=James+K&size=100&background=2C1F14&color=D4A843&bold=true" alt="James" /></div>
+          <div>
+            <div class="reviewer-name">James K.</div>
+            <div class="reviewer-from">London, UK</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Chefchaouen was magical but the real magic was our host — she cooked us breakfast every morning and introduced us to her neighbors. Unforgettable."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img crossorigin="anonymous" src="https://ui-avatars.com/api/?name=Lina+V&size=100&background=6B8068&color=fff&bold=true" alt="Lina" /></div>
+          <div>
+            <div class="reviewer-name">Lina V.</div>
+            <div class="reviewer-from">Barcelona, Spain</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal" style="margin-bottom: 80px;">
+    <div class="cta-text-wrap">
+      <div class="cta-label">For Hosts</div>
+      <h2 class="cta-title">Turn Your Space Into<br>a Story Worth Telling</h2>
+      <p class="cta-sub">Join thousands of Moroccan hosts earning on their own schedule. We handle the bookings, you create the magic.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="showToast('Starting host onboarding… 🏡')">Start Hosting Today</button>
+      <button class="btn-outline-white" onclick="showToast('Opening guide…')">Learn More →</button>
+    </div>
+  </div>
+
+  <!-- BECOME A HOST -->
+  <section class="hosts" id="host">
+    <div class="host-feature">
+      <div class="host-img-col reveal">
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1543489822-c49534f3271f?w=800&q=80" alt="Host in Riad" class="host-img-main" />
+        <img crossorigin="anonymous" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80" alt="Riad Interior" class="host-img-accent" />
+        <div class="host-proof">
+          <div class="host-proof-num">MAD 4,200</div>
+          <div class="host-proof-lbl">Average monthly earnings</div>
+        </div>
+      </div>
+      <div class="host-text-col reveal reveal-delay-2">
+        <div class="section-label">Host With Us</div>
+        <h2 class="host-title">Your Home.<br>Their <em>Adventure.</em></h2>
+        <p class="host-desc">Whether you own a centuries-old riad in Fes or a modern apartment in Casablanca, MoroccoStay connects you with verified travellers from around the world who are passionate about authentic experiences.</p>
+        <ul class="host-perks">
+          <li class="host-perk"><div class="perk-dot"></div><div class="perk-text"><strong>Zero listing fees</strong> — post your space completely free of charge</div></li>
+          <li class="host-perk"><div class="perk-dot"></div><div class="perk-text"><strong>Verified guests only</strong> — ID and review-based trust system</div></li>
+          <li class="host-perk"><div class="perk-dot"></div><div class="perk-text"><strong>Flexible pricing tools</strong> — set your own rates and availability</div></li>
+          <li class="host-perk"><div class="perk-dot"></div><div class="perk-text"><strong>24/7 host support</strong> — dedicated team to help you succeed</div></li>
+        </ul>
+        <button class="btn-primary" style="padding: 16px 40px; font-size: 14px;" onclick="showToast('Welcome, future host! 🎉')">Become a Host</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="#" class="nav-logo">
+          <div class="logo-mark">🏡</div>
+          <span class="logo-text">Morocco<span>Stay</span></span>
+        </a>
+        <p class="footer-brand-desc">Morocco's premier marketplace for authentic stays. Connecting travellers with local hosts across the Kingdom's most beautiful destinations.</p>
+        <div class="footer-socials">
+          <div class="social-btn" onclick="showToast('Opening Instagram…')">📸</div>
+          <div class="social-btn" onclick="showToast('Opening X…')">𝕏</div>
+          <div class="social-btn" onclick="showToast('Opening TikTok…')">♪</div>
+          <div class="social-btn" onclick="showToast('Opening Facebook…')">f</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="#">Marrakech</a></li>
+          <li><a href="#">Fes & Meknes</a></li>
+          <li><a href="#">Chefchaouen</a></li>
+          <li><a href="#">Sahara Desert</a></li>
+          <li><a href="#">Coastal Stays</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Hosting</div>
+        <ul class="footer-links">
+          <li><a href="#">List Your Space</a></li>
+          <li><a href="#">Host Resources</a></li>
+          <li><a href="#">Responsible Hosting</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Trust & Safety</a></li>
+          <li><a href="#">Cancellation Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MoroccoStay. All rights reserved. Built with ♥ in Morocco.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // CUSTOM CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    document.querySelectorAll('button, a, .dest-card, .listing-card, .exp-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; ring.style.width = '60px'; ring.style.height = '60px'; ring.style.borderColor = 'rgba(200,82,42,0.6)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; ring.style.width = '40px'; ring.style.height = '40px'; ring.style.borderColor = 'rgba(200,82,42,0.5)'; });
+    });
+
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // TOAST
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerHTML = '✦ ' + msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    // TABS
+    function setActiveTab(el) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      showToast('Filtering: ' + el.textContent + ' ✨');
+    }
+
+    // NAV SCROLL
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 60) nav.style.padding = '12px 48px';
+      else nav.style.padding = '20px 48px';
+    });
+
+    // WISHLIST HEART TOGGLE
+    document.querySelectorAll('.listing-fav').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isLiked = this.textContent === '♥';
+        this.textContent = isLiked ? '♡' : '♥';
+        this.style.color = isLiked ? '' : '#C8522A';
+        showToast(isLiked ? 'Removed from wishlist' : 'Added to wishlist! ♥');
+      });
+    });
+  </script>
+</body>
+</html>
