@@ -1,4 +1,4 @@
-# MoroccoStay — Luxury Real Estate Marketplace
+# MoroccoStay — Luxury Real Estate Marketplace (React & Tailwind)
 
 "Project Nexus — Capstone project for ALX Software Engineering graduation (Feb 2026)."
 
