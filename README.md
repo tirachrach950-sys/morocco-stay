@@ -2,6 +2,7 @@
 
 "Project Nexus — Capstone project for ALX Software Engineering graduation (Feb 2026)."
 
+
 A high-end, modern real estate marketplace built to showcase luxury Riads and Villas across Morocco.
 
 ![MoroccoStay](https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=1200)
@@ -9,6 +10,13 @@ A high-end, modern real estate marketplace built to showcase luxury Riads and Vi
 ## Live Demo
 🚀 [View Live on Vercel](https://morocco-stay-marketplace-ow5y.vercel.app/)
 
+### 🛠️ Engineering Focus
+
+Performance: Optimized image loading and layout shifts for a smooth user experience.
+
+State Management: Implemented real-time property filtering using React hooks.
+
+UI/UX Excellence: Developed a custom glassmorphism interface inspired by Moroccan luxury aesthetics.
 
 ## Features
 - Modern Luxury UI with glassmorphism effects and smooth transitions
