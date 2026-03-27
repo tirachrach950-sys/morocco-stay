@@ -1,5 +1,7 @@
 # MoroccoStay — Luxury Real Estate Marketplace
 
+"Project Nexus — Capstone project for ALX Software Engineering graduation (Feb 2026)."
+
 A high-end, modern real estate marketplace built to showcase luxury Riads and Villas across Morocco.
 
 ![MoroccoStay](https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=1200)
